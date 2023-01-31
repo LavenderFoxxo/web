@@ -3,6 +3,9 @@ import axios from 'axios';
 import { InferGetServerSidePropsType, NextPage } from "next";
 import Activity from '../components/lanyard'
 import { SiCss3, SiTypescript, SiJavascript, SiHtml5, SiPhp, SiMongodb, SiNextdotjs, SiTailwindcss, SiMarkdown, SiUbuntu, SiYarn, SiSass, SiGit, SiCloudflare} from 'react-icons/si'
+import { useLanyardWS } from 'use-lanyard';
+import Lanyard from '../components/activity'
+
 
 export const getServerSideProps = async () => {
     const { data } = await axios.get(
@@ -57,6 +60,8 @@ interface Position {
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 const Home: NextPage<Props> = ({ repos }) => {
+  const data = useLanyardWS("988801425196867644")
+
   return (
     <>
     <motion.div
@@ -74,51 +79,35 @@ const Home: NextPage<Props> = ({ repos }) => {
 
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Knowledge 💡</h1>
-          <p className="opacity-95 pb-3">Below you'll find languages that I am proficient in. I commonly use Javascript and Typescript for personal projects.</p>
-          <div className="w-full flex flex-wrap flex-row justify-center p-1 border border-slate-800 rounded-md bg-white/10 dark:bg-black/10 mb-12">
-            <li className="flex p-2">
-              <span>{SiCss3({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiHtml5({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiJavascript({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiTypescript({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiTailwindcss({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiNextdotjs({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiPhp({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiMongodb({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiMarkdown({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiUbuntu({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiYarn({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiSass({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiGit({ className: 'h-6 w-6' })}</span>
-            </li>
-            <li className="flex p-2">
-              <span>{SiCloudflare({ className: 'h-6 w-6' })}</span>
-            </li>
+          <p className="opacity-95 ">Below you'll find languages that I am proficient in. I commonly use Javascript and Typescript for personal projects.</p>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div className="flex items-center space-x-2">
+              {SiJavascript({ className: "w-6 h-6" })}
+              <p className="my-auto pt-1">Javascript</p>
+            </div>
+            <div className="flex items-center space-x-2">
+              {SiTypescript({ className: "w-6 h-6" })}
+              <p className="my-auto pt-1">Typescript</p>
+            </div>
+            <div className="flex items-center space-x-2">
+              {SiPhp({ className: "w-6 h-6" })}
+              <p className="my-auto pt-1">PHP</p>
+            </div>
+            <div className="flex items-center space-x-2">
+              {SiHtml5({ className: "w-6 h-6" })}
+              <p className="my-auto pt-1">HTML</p>
+            </div>
+            <div className="flex items-center space-x-2">
+              {SiCss3({ className: "w-6 h-6" })}
+              <p className="my-auto pt-1">CSS</p>
+            </div>
           </div>
+
+        </div>
+
+        <div className="space-y-4">
+          <h1 className="text-3xl font-bold">What am I doing? 🤔</h1>
+          <Lanyard />
         </div>
         <Activity />
       </div>
