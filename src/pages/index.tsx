@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import axios from 'axios';
 import { InferGetServerSidePropsType, NextPage } from "next";
-import Activity from '../components/lanyard'
 import { SiCss3, SiTypescript, SiJavascript, SiHtml5, SiPhp, SiMongodb, SiNextdotjs, SiTailwindcss, SiMarkdown, SiUbuntu, SiYarn, SiSass, SiGit, SiCloudflare} from 'react-icons/si'
-import { useLanyardWS } from 'use-lanyard';
 import Lanyard from '../components/activity'
 
 
@@ -60,8 +58,6 @@ interface Position {
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 const Home: NextPage<Props> = ({ repos }) => {
-  const data = useLanyardWS("988801425196867644")
-
   return (
     <>
     <motion.div
@@ -69,7 +65,7 @@ const Home: NextPage<Props> = ({ repos }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
     >
-      <div className="space-y-10 max-w-2xl mx-auto">
+      <div className="space-y-10">
         <div className="space-y-4">
           <h1 className="text-5xl font-bold">Heya, I'm Alexander 👋</h1>
           <p className="opacity-95">I am a full-stack developer from Canada. I enjoy coding as a hobby and as a passion. However, I find myself leaning towards frontend development, whilst I am proficient in backend, I find frontend more appealing.</p>
@@ -109,7 +105,6 @@ const Home: NextPage<Props> = ({ repos }) => {
           <h1 className="text-3xl font-bold">What am I doing? 🤔</h1>
           <Lanyard />
         </div>
-        <Activity />
       </div>
       </motion.div>
     </>

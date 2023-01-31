@@ -5,28 +5,36 @@ export default function Lanyard() {
 
     if (!data) return null;
 
-    let activity 
+    let activity
 
-        if (data?.listening_to_spotify && data.spotify !== null) {
-            const playing = data.spotify;
-            const title = playing.song;
-            const artist = playing.artist;
+    if (data?.listening_to_spotify && data.spotify !== null) {
+        const playing = data.spotify;
+        const title = playing.song;
+        const artist = playing.artist;
 
-            activity = `Listening to ${title} by ${artist}`
-        } else {
-            activity = `${data?.activities[0].name} - ${data?.activities[0].state}`
-        }
+        activity = `Listening to ${title} by ${artist}`
+    } else if (data?.activities.length != 0) {
+        activity = `${data?.activities[0].name} - ${data?.activities[0].state}`
+    } else {
+        activity = 'Not doing anything 💤'
+    }
 
-    function Status() {
-        if (data?.discord_status === "offline") {
-            return (
-                <>
-                    <span className="absolute w-4 h-4 bg-red-600 rounded-full animate-ping" />
-                    <span className="absolute w-4 h-4 bg-red-600 rounded-full" />
-                </>
+    let status
+    let status1
 
-            )
-        }
+    if (data.discord_status === "offline") {
+        status = `absolute w-3 h-3 bg-gray-600 rounded-full animate-ping`
+        status1 = `absolute w-3 h-3 bg-gray-600 rounded-full`
+        activity = null
+    } else if (data.discord_status === "dnd") {
+        status = `absolute w-3 h-3 bg-red-600 rounded-full animate-ping`
+        status1 = `absolute w-3 h-3 bg-red-600 rounded-full`
+    } else if (data.discord_status === "online") {
+        status = `absolute w-3 h-3 bg-green-600 rounded-full animate-ping`
+        status1 = `absolute w-3 h-3 bg-green-600 rounded-full`
+    } else {
+        status = `absolute w-3 h-3 bg-yellow-600 rounded-full animate-ping`
+        status1 = `absolute w-3 h-3 bg-yellow-600 rounded-full`
     }
 
     return (
@@ -39,8 +47,9 @@ export default function Lanyard() {
             <div className="flex-col ml-5 my-auto">
                 <p className="font-bold text-lg flex">
                     {data.discord_user.username}{"#"}{data.discord_user.discriminator}
-                    <span className="ml-2 w-4 h-4 pt-1">
-                        {Status}
+                    <span className="ml-2 w-3 h-3 pt-2">
+                    <span className={status} />
+                    <span className={status1} />
                     </span>
                 </p>
                 <p v-if="data.activities.length >= 1" className="font-normal text-md">
