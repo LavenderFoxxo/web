@@ -15,20 +15,28 @@ import {
   SiUbuntu,
   SiYarn,
   SiSass,
+  SiGithub,
+  SiTwitter,
   SiGit,
   SiCloudflare,
 } from "react-icons/si";
+import {HiOutlineLocationMarker} from 'react-icons/hi';
 import Lanyard from "../components/activity";
+import type {Data as LanyardData, LanyardResponse} from 'use-lanyard';
+import {LanyardError, useLanyard} from 'use-lanyard';
 
 export const getServerSideProps = async () => {
   const { data } = await axios.get(
     "https://gh-pinned-repos.egoist.dev/?username=lavenderfoxxo"
   );
 
+
+
   return {
     props: {
       repos: data,
     },
+    
   };
 };
 
@@ -127,8 +135,12 @@ interface Position {
   end: string | null;
 }
 
+
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 const Home: NextPage<Props> = ({ repos }) => {
+  const {data: lanyard} = useLanyard("988801425196867644");
+
+
   return (
     <>
       <motion.div
@@ -138,6 +150,52 @@ const Home: NextPage<Props> = ({ repos }) => {
       >
         <div className="space-y-10">
           <div className="space-y-4">
+          <div className="flex items-center space-x-3">
+					<a
+						href="https://github.com/LavenderFoxxo"
+						target="_blank"
+						rel="noreferrer"
+            className="hover:scale-105 transition-all"
+						aria-label="GitHub Profile"
+					>
+						<SiGithub className="h-7 w-7" />
+						<span className="sr-only">GitHub Profile</span>
+					</a>
+
+					<a
+						href="https://twitter.com/lavenderfolf"
+						target="_blank"
+						rel="noreferrer"
+            className="hover:scale-105 transition-all"
+						aria-label="Twitter Profile"
+					>
+						<SiTwitter className="h-7 w-7" />
+						<span className="sr-only">Twitter Profile</span>
+					</a>
+
+					{lanyard && (
+						<p className="inline-flex items-center space-x-2">
+							<a
+                href="https://www.google.com/search?q=Oceanside,%20CA"
+								target="_blank"
+								rel="noreferrer"
+								className="hover:scale-105 transition-all h-7 flex items-center rounded-full bg-[#39313f] px-2 pr-3 "
+							>
+								<span>
+									<HiOutlineLocationMarker className="inline" />
+									&nbsp;
+								</span>
+
+								<span className="-mb-0.5">
+									{lanyard.kv.location}
+									&nbsp;
+								</span>
+
+								<span className="-mb-0.5 ml-1 block h-[6px] w-[6px] animate-pulse rounded-full bg-neutral-600 dark:bg-white" />
+							</a>
+						</p>
+					)}
+				</div>
             <h1 className="text-5xl font-bold">Heya, I'm Alexander 👋</h1>
             <p className="opacity-95">
               I am a full-stack developer from Canada. I enjoy coding as a hobby
@@ -148,14 +206,14 @@ const Home: NextPage<Props> = ({ repos }) => {
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-3xl font-bold">Knowledge 💡</h1>
+            <h1 className="text-3xl font-bold">My Skills 💡</h1>
             <p className="opacity-95 ">
               Below you'll find languages that I am proficient in. I commonly
               use Javascript and Typescript for personal projects.
             </p>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               {skills.map((skill) => (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2" key={skill.description}>
                   {skill.icon({ className: "w-6 h-6" })}
                   {<p className="my-auto">{skill.description}</p>}{" "}
                 </div>
@@ -164,7 +222,7 @@ const Home: NextPage<Props> = ({ repos }) => {
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-3xl font-bold">Positions 💼</h1>
+            <h1 className="text-3xl font-bold">What I'm Working On  💼</h1>
             <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
               {positions.map((position) => (
                 <motion.a
@@ -172,6 +230,7 @@ const Home: NextPage<Props> = ({ repos }) => {
                 whileTap={{ scale: 0.98 }}
                 href={position.href}
                 target="_blank"
+                key={position.name}
               >
                 <p className="font-bold">{position.name}</p>
                 <p>{position.position}</p>
@@ -184,7 +243,7 @@ const Home: NextPage<Props> = ({ repos }) => {
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-3xl font-bold">Repositories 💻</h1>
+            <h1 className="text-3xl font-bold">My Repositories 💻</h1>
             <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
             {repos.map((pin: any, id: number) => (
               <motion.a
@@ -206,7 +265,7 @@ const Home: NextPage<Props> = ({ repos }) => {
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-3xl font-bold">What am I doing? 🤔</h1>
+            <h1 className="text-3xl font-bold">What I'm Up To 🖥️</h1>
             <Lanyard />
           </div>
         </div>
