@@ -5,5 +5,5 @@
 
 html {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  @apply bg-gradient-to-tr from-[#010409] to-[#0d131e] min-h-full text-white;
+  @apply bg-gradient-to-tr from-[#170f1c] to-[#160d1e] min-h-full text-white;
 }

@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+import Footer from '../components/footer'
 import '../styles/globals.css';
 import Navbar from '../components/navbar'
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -17,6 +18,7 @@ const App = ({ Component, pageProps }: AppProps ) => {
       <AnimatePresence mode="wait">
         <Component key={asPath} {...pageProps} />
       </AnimatePresence>
+      <Footer />
     </div>
   )
 }

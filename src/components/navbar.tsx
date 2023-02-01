@@ -18,7 +18,7 @@ interface Link {
 
 export default function Navbar() {
     return (
-        <div className="py-3 mt-4 px-4 mb-8 rounded-lg border border-[#151d28] bg-[#0c1115] my-auto">
+        <div className="py-3 mt-4 px-4 mb-8 rounded-lg border border-[#39313f] bg-[#231a29] my-auto">
             <div className="flex flex-row space-x-2 items-center my-auto">
                 <div className="flex-1">
                     <div className="flex space-x-4 my-auto">
