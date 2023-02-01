@@ -197,6 +197,8 @@ const Home: NextPage<Props> = ({ repos }) => {
                 <p className="font-semibold">
                   <span className="opacity-80 font-normal">{pin.owner} </span>/{" "}
                   {pin.repo}
+                  <br/>
+                  <span className="font-normal opacity-80">{pin.description}</span>
                 </p>
               </motion.a>
             ))}
