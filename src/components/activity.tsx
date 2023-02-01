@@ -40,7 +40,7 @@ export default function Lanyard() {
     return (
         <div className="rounded-lg p-2 w-full border-[#39313f] bg-[#231a29] border flex flex-row">
             <img
-                src={`https://www.itsalexander.dev/static/Lavender_cropped.png`}
+                src={`https://www.itsalexander.dev/Lavender.png`}
                 alt="Discord Avatar"
                 className="w-[100px] rounded-lg hover:scale-105 transition-all"
             />
