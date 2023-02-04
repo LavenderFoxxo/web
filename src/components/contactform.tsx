@@ -42,7 +42,7 @@ const ContactForm = () => {
         <div className="md:col-span-2 row-span-3 bg-opacity-50 bg-[#231a29] rounded-lg p-4 border border-[#39313f]">
             <h1 className="font-bold text-md ml-1 mb-1">Name</h1>
             <input
-                placeholder="Nicholas Kirkwood"
+                placeholder="Marino Franz"
                 type="text"
                 onChange={(e: any) => (name.current  = e.target.value)}
                 className="w-full p-2 mb-4 rounded-md bg-[#39313f] text-sm placeholder:opacity-90"
@@ -66,7 +66,7 @@ const ContactForm = () => {
 
                 <button
                     onClick={submitMessage}
-                    className="border bg-[#39313f] p-2 rounded-md border-[#231a29] hover:bg-[#201c23] flex flex-row items-center"
+                    className="border bg-[#39313f] p-2 rounded-md border-[#231a29] hover:bg-[#201c23] flex flex-row items-center transition-all"
                 >
                     <span className="mt-[2px]">Send</span>
                     {!loading && <RiSendPlane2Fill className="ml-2 mt-[2px]" />}
