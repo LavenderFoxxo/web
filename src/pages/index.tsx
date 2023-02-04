@@ -98,13 +98,6 @@ interface Skills {
 
 const positions: Position[] = [
   {
-    name: "Digital Bot",
-    href: "https://digitalbot.xyz",
-    position: "Assistant Developer",
-    start: "January 2023",
-    end: null,
-  },
-  {
     name: "RadioWiki",
     href: "https://radiowiki.net",
     position: "Developer",
