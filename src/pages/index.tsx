@@ -112,6 +112,13 @@ const positions: Position[] = [
     end: "January 2023",
   },
   {
+    name: "Bright Star Hosting",
+    href: "https://brightstarhosting.com",
+    position: "Developer",
+    start: "January 2023",
+    end: null,
+  },
+  {
     name: "UpBeat Radio",
     href: "https://upbeatradio.net",
     position: "Radio Presenter",
