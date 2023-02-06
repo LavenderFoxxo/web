@@ -114,7 +114,7 @@ const positions: Position[] = [
   {
     name: "Bright Star Hosting",
     href: "https://brightstarhosting.com",
-    position: "Developer",
+    position: "Technical Support Agent",
     start: "January 2023",
     end: null,
   },
