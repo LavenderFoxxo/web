@@ -7,6 +7,9 @@ import Navbar from "../components/navbar";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Head from "next/head";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { Plus_Jakarta_Sans } from "@next/font/google";
+
+const plusjakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 config.autoAddCss = false;
 
@@ -51,12 +54,14 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <div className="mx-auto max-w-3xl px-5">
-        <Navbar />
-        <AnimatePresence mode="wait">
-          <Component key={asPath} {...pageProps} />
-        </AnimatePresence>
-        <Footer />
+      <div className={plusjakarta.className}>
+        <div className="mx-auto max-w-3xl px-5">
+          <Navbar />
+          <AnimatePresence mode="wait">
+            <Component key={asPath} {...pageProps} />
+          </AnimatePresence>
+          <Footer />
+        </div>
       </div>
     </>
   );

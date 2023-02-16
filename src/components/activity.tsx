@@ -14,7 +14,14 @@ export default function Lanyard() {
 
         activity = `Listening to ${title} by ${artist}`
     } else if (data?.activities.length != 0) {
-        activity = `${data?.activities[0].name} - ${data?.activities[0].state}`
+        if (data?.activities[0].id === "custom") {
+            if (data?.activities[1]) activity = `${data?.activities[1].name} - ${data?.activities[1].state}`
+            else activity = 'Not doing anything 💤'
+        } else if (!data?.activities[1]) {
+            activity = `${data?.activities[0].name} - ${data?.activities[0].state}`
+        } else {
+            activity = 'Not doing anything 💤'
+        }
     } else {
         activity = 'Not doing anything 💤'
     }

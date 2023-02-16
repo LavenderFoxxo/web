@@ -1,9 +1,14 @@
+import { m } from 'framer-motion';
 import NextLink from 'next/link';
 
 const pages: Link[] = [
     {
         name: "Home",
         href: "/"
+    },
+    {
+        name: 'About',
+        href: '/about'
     },
     {
         name: "Contact",

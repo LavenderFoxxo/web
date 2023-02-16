@@ -15,10 +15,13 @@ import {
   SiUbuntu,
   SiYarn,
   SiSass,
+  SiPrisma,
   SiGithub,
   SiTwitter,
   SiGit,
   SiCloudflare,
+  SiExpress,
+  SiFigma,
 } from "react-icons/si";
 import {HiOutlineLocationMarker} from 'react-icons/hi';
 import Lanyard from "../components/activity";
@@ -86,6 +89,22 @@ const skills: Skills[] = [
     description: "Cloudflare",
   },
   {
+    icon: SiMongodb,
+    description: "MongoDB",
+  },
+  {
+    icon: SiExpress,
+    description: "Express",
+  },
+  {
+    icon: SiFigma,
+    description: "Figma",
+  },
+  {
+    icon: SiPrisma,
+    description: "Prisma",
+  },
+  {
     icon: SiGit,
     description: 'Git'
   }
@@ -98,14 +117,28 @@ interface Skills {
 
 const positions: Position[] = [
   {
-    name: "RadioWiki",
-    href: "https://radiowiki.net",
-    position: "Developer",
-    start: "December 2022",
+    name: "FluffBot",
+    href: "https://fluffbot.xyz",
+    position: "Creator",
+    start: "January 2023",
     end: null,
   },
   {
-    name: "Harmony",
+    name: "Omero Systems",
+    href: "https://omerobot.co.uk",
+    position: "Human Resources Manager",
+    start: "Feburary 2022",
+    end: null,
+  },
+  {
+    name: "Pulse",
+    href: "",
+    position: "Developer",
+    start: "January 2022",
+    end: null,
+  },
+  {
+    name: "Harmony Radio",
     href: "https://weareharmony.net",
     position: "Developer",
     start: "October 2022",
@@ -114,15 +147,15 @@ const positions: Position[] = [
   {
     name: "Bright Star Hosting",
     href: "https://brightstarhosting.com",
-    position: "Technical Support Agent",
-    start: "January 2023",
+    position: "System Administrator",
+    start: "December 2022",
     end: null,
   },
   {
     name: "UpBeat Radio",
-    href: "https://upbeatradio.net",
+    href: "https://radiowiki.net",
     position: "Radio Presenter",
-    start: "January 2023",
+    start: "December 2022",
     end: null,
   },
 ];
@@ -148,11 +181,11 @@ const Home: NextPage<Props> = ({ repos }) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
       >
-        <div className="space-y-10">
+        <div className="space-y-10 max-w-2xl mx-auto">
           <div className="space-y-4">
           <div className="flex items-center space-x-3">
 					<a
-						href="https://github.com/LavenderFoxxo"
+						href="/github"
 						target="_blank"
 						rel="noreferrer"
             className="hover:scale-105 transition-all"
@@ -163,7 +196,7 @@ const Home: NextPage<Props> = ({ repos }) => {
 					</a>
 
 					<a
-						href="https://twitter.com/lavenderfolf"
+						href="/twitter"
 						target="_blank"
 						rel="noreferrer"
             className="hover:scale-105 transition-all"
